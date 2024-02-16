@@ -8,16 +8,12 @@ function HeaderHome() {
     return (
         <Header>
             <View style={{
-                // backgroundColor: '#000',
                 height: '100%',
                 flexDirection: 'row',
                 justifyContent: 'space-between',
                 alignItems: 'center',
             }}>
-                <FontAwesomeIcon icon={faAlignJustify} size={32}
-                />
-                {/* <Text>dsad</Text> */}
-
+                <FontAwesomeIcon icon={faAlignJustify} size={32} />
                 <FontAwesomeIcon icon={faHeart}
                     size={32}
                     color='red'

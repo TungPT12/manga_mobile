@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../../components/Header/Header';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, ScrollView, Text, View } from 'react-native';
 
 function HeaderDetail({ navigation }) {
     return (

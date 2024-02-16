@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './src/views/home/Home';
 import { SafeAreaView, View } from 'react-native';
 import DetailManga from './src/views/detail/DetailManga';
+import MangaImages from './src/views/mangaImage/MangaImages';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -20,6 +21,13 @@ export default function App() {
         <Stack.Screen
           name='detail'
           component={DetailManga}
+          options={{
+            headerShown: false
+          }}
+        />
+        <Stack.Screen
+          name='manga'
+          component={MangaImages}
           options={{
             headerShown: false
           }}
