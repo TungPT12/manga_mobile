@@ -33,7 +33,6 @@ const a = [
 ]
 
 function Home({ navigation }) {
-    // const heightDevice = 
     return (
         <View style={{
             width: '100%',

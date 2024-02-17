@@ -1,11 +1,15 @@
-import React from 'react';
-import { Button, Image, ScrollView, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Button, Image, ScrollView, Text, TouchableHighlight, View } from 'react-native';
 import styles from './DetailMangaCss';
 import HeaderDetail from './HeaderDetail';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faClock, faPlusCircle, faTags, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faHeart, faPlusCircle, faTags, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import CardChapter from '../../components/CardChapter/CardChapter';
 function DetailManga({ navigation, route }) {
-
+    const [activeTabs, setActiveTabs] = useState({
+        listChapterTab: true,
+        introduceTabs: false,
+    })
     return (
         <View style={styles.detailContainer}>
             <HeaderDetail
@@ -13,7 +17,6 @@ function DetailManga({ navigation, route }) {
             />
 
             <View style={{
-                // backgroundColor: 'grey',
                 flex: 1
             }}>
                 <ScrollView
@@ -30,7 +33,7 @@ function DetailManga({ navigation, route }) {
                         <Image
                             style={styles.image}
                             source={{
-                                uri: "https://cdnntx.com/nettruyen/thumb/van-xui-chon-cong-so.jpg"
+                                uri: "https://banhkemngonghinh.com/wp-content/uploads/2018/04/56-banh-kem-sinh-nhat-tao-hinhf-3d-mat-doremon.jpg"
                             }} />
                         <View style={styles.infoManga}>
                             <View style={styles.otherName}>
@@ -63,78 +66,52 @@ function DetailManga({ navigation, route }) {
                         </View>
                     </View>
                     <View>
-                        <View style={{
-                            // justifyContent
-                            flexDirection: 'row',
-                            backgroundColor: '#000'
-                        }}>
-                            <Button
-                                style={{
-                                    flex: 1,
-                                }}
-                                title='Danh sách chương'
-                            />
-                            <Button
-                                title='Danh sách chương'
-                            />
+                        <View style={styles.wrapTabs}>
+                            <TouchableHighlight underlayColor='#e8e8e8' onPress={() => {
+                                setActiveTabs({
+                                    introduceTabs: false,
+                                    listChapterTab: true
+                                })
+                            }} style={{
+                                ...styles.tabs,
+                                borderBottomColor: activeTabs.listChapterTab ? '#f4bb28' : '#fff',
+                                flex: 2
+                            }}>
+                                <Text style={styles.textTabs}>Danh sách chương</Text>
+                            </TouchableHighlight>
+                            <TouchableHighlight underlayColor='#e8e8e8' onPress={() => {
+                                setActiveTabs({
+                                    introduceTabs: true,
+                                    listChapterTab: false
+                                })
+                            }} style={{
+                                ...styles.tabs,
+                                flex: 1.5,
+                                borderBottomColor: activeTabs.introduceTabs ? '#f4bb28' : '#fff',
+                            }}>
+                                <Text style={styles.textTabs}>Giới thiệu</Text>
+                            </TouchableHighlight>
                         </View>
                         <View style={{
                             flex: 1
                         }}>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsafffffffffffffffffdsa</Text>
-                            <Text>asdsafffffffffffffffffdsa</Text>
-                            <Text>asdsafffffffffffffffffdsa</Text>
-                            <Text>asdsafffffffffffffffffdsa</Text>
-                            <Text>asdsafffffffffffffffffdsa</Text>
-                            <Text>asdsafffffffffffffffffdsa</Text>
-                            <Text>asdsafffffffffffffffffdsa</Text>
-                            <Text>asdsafffffffffffffffffdsa</Text>
-                            <Text>asdsafffffffffffffffffdsa</Text>
-                            <Text>asdsafffffffffffffffffdsa</Text>
-                            <Text>asdsafffffffffffffffffdsa</Text>
-                            <Text>asdsafffffffffffffffffdsa</Text>
-                            <Text>asdsadsa</Text>
-                            <Text>asdsadsadddddd</Text>
+                            {
+                                [1, 2, 4, 5, 6].map(() => {
+                                    return <CardChapter navigation={navigation} />
+                                })
+                            }
                         </View>
                     </View>
                 </ScrollView>
+            </View>
+            <View style={styles.footer}>
+                <FontAwesomeIcon icon={faHeart}
+                    size={22}
+                    color='#b6b6b6'
+                    style={{
+                        elevation: 10
+                    }}
+                />
             </View>
         </View>
     );

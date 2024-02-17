@@ -4,9 +4,9 @@ const style = StyleSheet.create({
     detailContainer: {
         marginTop: StatusBar.currentHeight,
         paddingHorizontal: 4,
-        // height: '100%',
         paddingBottom: 1,
-        flex: 1
+        flex: 1,
+        backgroundColor: '#fff'
     },
     image: {
         backgroundColor: '#000',
@@ -65,9 +65,27 @@ const style = StyleSheet.create({
         color: '#D3D3D3'
     },
     action: {
-        marginTop: 4,
-        justifyContent: "space-around",
+        marginTop: 8,
+        justifyContent: "space-between",
         flexDirection: 'row'
+    },
+    wrapTabs: {
+        flexDirection: "row"
+    },
+    tabs: {
+        padding: 8,
+        borderBottomWidth: 2,
+    },
+    textTabs: {
+        fontSize: 15,
+        textTransform: "uppercase",
+        fontWeight: '500',
+        textAlign: "center"
+    },
+    footer: {
+        justifyContent: "center",
+        height: 40,
+        width: '100%',
     }
 })
 
