@@ -12,7 +12,6 @@ function MangaImage() {
                     width: '100%',
                     aspectRatio: 600 / 1000,
                     resizeMode: 'contain'
-                    // height: 100
                 }}
             />
 

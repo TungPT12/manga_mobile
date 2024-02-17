@@ -13,9 +13,9 @@ function HeaderHome() {
                 justifyContent: 'space-between',
                 alignItems: 'center',
             }}>
-                <FontAwesomeIcon icon={faAlignJustify} size={32} />
+                <FontAwesomeIcon icon={faAlignJustify} size={28} />
                 <FontAwesomeIcon icon={faHeart}
-                    size={32}
+                    size={28}
                     color='red'
                 />
             </View>

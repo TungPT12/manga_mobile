@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, Pressable, Text, View } from 'react-native';
 import styles from './MangaCardCss';
 
-function MangaCard({ navigation, url }) {
+function MangaCard({ navigation, url, title, id }) {
     return (
         <View style={styles.mangaCardContainer}>
             <Image
@@ -12,9 +12,9 @@ function MangaCard({ navigation, url }) {
                 style={styles.image}
             />
             <Pressable onPress={() => {
-                navigation.navigate('detail', { url: url })
+                navigation.navigate('detail', { id: id })
             }}>
-                <Text style={styles.mangaName}>Tử linh sưeeeeedđdsadsd</Text>
+                <Text style={styles.mangaName}>{title}</Text>
             </Pressable>
         </View>
     );

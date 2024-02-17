@@ -3,13 +3,14 @@ import { Dimensions, StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     mangaCardContainer: {
         flex: 1 / 2,
-        padding: 3
+        padding: 3,
+        marginBottom: 8,
     },
 
     image: {
         backgroundColor: '#000',
         height: Dimensions.get('screen').height * 0.33,
-        resizeMode: 'contain'
+        resizeMode: 'cover'
     },
 
     mangaName: {
