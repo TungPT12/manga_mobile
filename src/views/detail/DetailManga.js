@@ -1,21 +1,58 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Image, ScrollView, Text, TouchableHighlight, View } from 'react-native';
 import styles from './DetailMangaCss';
 import HeaderDetail from './HeaderDetail';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faClock, faHeart, faPlusCircle, faTags, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import CardChapter from '../../components/CardChapter/CardChapter';
+import { getChaptersByMangaIdApi } from '../../apis/chapter';
 function DetailManga({ navigation, route }) {
+    const [chapters, setChapters] = useState([])
     const [activeTabs, setActiveTabs] = useState({
         listChapterTab: true,
         introduceTabs: false,
     })
+    const { id, url, title, authors, otherNames, status, types, summary } = route.params;
+
+    const formatTypes = (types) => {
+        return types.map((type, index) => {
+            return type.name;
+        }).join(' - ')
+    }
+
+    const getChaptersByMangaId = (id) => {
+        getChaptersByMangaIdApi(id).then((response) => {
+            if (response.status != 200) {
+                throw new Error(JSON.stringify(response.error))
+            }
+            return response.data;
+        }).then((data) => {
+            setChapters(data)
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
+
+    const renderChapters = (chapters) => {
+        return chapters.map((chapter) => {
+            return <CardChapter
+                key={chapter._id}
+                navigation={navigation}
+                idChapter={chapter._id}
+                chapterNumber={chapter.chapterNumber}
+            />
+        })
+    }
+
+    useEffect(() => {
+        getChaptersByMangaId(id)
+    }, [])
+
     return (
         <View style={styles.detailContainer}>
             <HeaderDetail
                 navigation={navigation}
             />
-
             <View style={{
                 flex: 1
             }}>
@@ -25,7 +62,7 @@ function DetailManga({ navigation, route }) {
                     }}
                 >
                     <Text style={styles.name}>
-                        Tuw linh su
+                        {title}
                     </Text>
                     <View style={{
                         flexDirection: 'row',
@@ -33,24 +70,24 @@ function DetailManga({ navigation, route }) {
                         <Image
                             style={styles.image}
                             source={{
-                                uri: "https://banhkemngonghinh.com/wp-content/uploads/2018/04/56-banh-kem-sinh-nhat-tao-hinhf-3d-mat-doremon.jpg"
+                                uri: url
                             }} />
                         <View style={styles.infoManga}>
                             <View style={styles.otherName}>
                                 <FontAwesomeIcon icon={faPlusCircle} size={22} style={styles.icon} />
-                                <Text numberOfLines={1} style={styles.text}>Tu linh suffffffffffffffffdddddddffff</Text>
+                                <Text numberOfLines={1} style={styles.text}>{otherNames.join(' - ')}</Text>
                             </View>
                             <View style={styles.authors}>
                                 <FontAwesomeIcon icon={faUserCircle} size={22} style={styles.icon} />
-                                <Text numberOfLines={1} style={styles.textAuthors}>Team nhaf dda -  Than mong</Text>
+                                <Text numberOfLines={1} style={styles.textAuthors}>{authors}</Text>
                             </View>
                             <View style={styles.status}>
                                 <FontAwesomeIcon icon={faClock} size={22} style={styles.icon} />
-                                <Text numberOfLines={1} style={styles.text}>Đang tiến hành</Text>
+                                <Text numberOfLines={1} style={styles.text}>{status}</Text>
                             </View>
                             <View style={styles.types}>
                                 <FontAwesomeIcon icon={faTags} size={22} style={styles.icon} />
-                                <Text numberOfLines={1} style={styles.text}>Hành động - Phiêu lưu</Text>
+                                <Text numberOfLines={1} style={styles.text}>{formatTypes(types)}</Text>
                             </View>
                             <View style={styles.action}>
                                 <Button
@@ -92,14 +129,8 @@ function DetailManga({ navigation, route }) {
                                 <Text style={styles.textTabs}>Giới thiệu</Text>
                             </TouchableHighlight>
                         </View>
-                        <View style={{
-                            flex: 1
-                        }}>
-                            {
-                                [1, 2, 4, 5, 6].map(() => {
-                                    return <CardChapter navigation={navigation} />
-                                })
-                            }
+                        <View style={{ flex: 1 }}>
+                            {renderChapters(chapters)}
                         </View>
                     </View>
                 </ScrollView>

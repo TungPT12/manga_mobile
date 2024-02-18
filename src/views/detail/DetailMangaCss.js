@@ -29,6 +29,7 @@ const style = StyleSheet.create({
         textTransform: "capitalize"
     },
     text: {
+        textTransform: "capitalize",
         fontSize: 16,
         flex: 1,
     },
@@ -54,6 +55,7 @@ const style = StyleSheet.create({
         width: '100%',
         flexDirection: 'row',
         marginBottom: 14,
+        textTransform: "capitalize",
     },
     types: {
         alignItems: 'center',

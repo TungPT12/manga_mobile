@@ -1,16 +1,16 @@
 import React from 'react';
-import { Image, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 
-function MangaImage() {
+function MangaImage({ url, height, width }) {
     return (
         <View>
             <Image
                 source={{
-                    uri: 'https://res.cloudinary.com/duotqxfvn/image/upload/v1707904115/axmreavfpsm151nhyrwi.png'
+                    uri: url
                 }}
                 style={{
                     width: '100%',
-                    aspectRatio: 600 / 1000,
+                    aspectRatio: width / height,
                     resizeMode: 'contain'
                 }}
             />
