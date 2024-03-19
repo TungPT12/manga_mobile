@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "manga_mobile",
-    "slug": "manga_mobile",
+    "slug": "manga-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.se140843.manga_mobile"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "dde8ac92-8a22-4648-a912-6d88afc3f6e0"
+      }
     }
   }
 }

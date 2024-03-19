@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, StatusBar, View } from 'react-native';
+import { FlatList, StatusBar, Text, View } from 'react-native';
 import MangaCard from '../../components/MangaCard/MangaCard';
 import HeaderHome from './HeaderHome';
 import { getMangasApi } from '../../apis/manga';
+import Header from '../../components/Header/Header';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faAlignJustify, faHeart } from '@fortawesome/free-solid-svg-icons';
 
 function Home({ navigation }) {
     const [mangas, setMangas] = useState([])
@@ -13,7 +16,7 @@ function Home({ navigation }) {
             }
             return response.data;
         }).then((data) => {
-            setMangas(data)
+            setMangas(data.data)
         }).catch((error) => {
             console.log(error)
         })
@@ -27,25 +30,51 @@ function Home({ navigation }) {
         <View style={{
             width: '100%',
             height: "100%",
-            marginTop: StatusBar.currentHeight,
+            // marginTop: StatusBar.currentHeight,
             paddingBottom: StatusBar.currentHeight,
-            backgroundColor: '#fff'
+            backgroundColor: '#fff',
+            position: 'relative'
         }}>
+            {/* <View style={{
+                backgroundColor: "#000",
+                height: "100%",
+                width: '80%',
+                position: "absolute",
+                zIndex: 2
+            }}>
+                <Header>
+                    <View style={{
+                        height: '100%',
+                        width: '100%',
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        backgroundColor: 'red'
+                    }}>
+                        <FontAwesomeIcon icon={faAlignJustify} size={28} />
+                        <FontAwesomeIcon icon={faHeart}
+                            size={28}
+                            color='red'
+                        />
+                        <Text>ádasdasd</Text>
+                    </View>
+                </Header>
+            </View> */}
             <HeaderHome />
             <FlatList
-                keyExtractor={(item, index) => item._id}
+                keyExtractor={(item) => item.id}
                 data={mangas}
                 numColumns={2}
                 key={2}
                 renderItem={({ item }) => {
                     return <MangaCard navigation={navigation}
                         authors={item.authors}
-                        id={item._id}
+                        id={item.id}
                         title={item.title}
-                        url={item.image}
-                        otherNames={item.otherNames}
+                        url={item.thumb}
+                        sub_title={item.sub_title}
                         status={item.status}
-                        types={item.types}
+                        genres={item.genres}
                         summary={item.summary}
                     />
                 }}

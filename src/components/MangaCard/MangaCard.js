@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, Pressable, Text, View } from 'react-native';
 import styles from './MangaCardCss';
 
-function MangaCard({ navigation, url, title, id, authors, otherNames, status, types, summary }) {
+function MangaCard({ navigation, url, title, id, authors, sub_title, status, genres, summary }) {
     return (
         <View style={styles.mangaCardContainer}>
             <Image
@@ -17,9 +17,9 @@ function MangaCard({ navigation, url, title, id, authors, otherNames, status, ty
                     url: url,
                     title: title,
                     authors: authors,
-                    otherNames: otherNames,
+                    sub_title: sub_title,
                     status: status,
-                    types: types,
+                    genres: genres,
                     summary: summary
                 })
             }}>

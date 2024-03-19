@@ -7,7 +7,7 @@ function CardChapter({ navigation, chapterNumber, idChapter }) {
         <Pressable onPress={() => {
             navigation.navigate('manga', { idChapter: idChapter })
         }} style={styles.container}>
-            <Text style={styles.text}>Chapter {chapterNumber}</Text>
+            <Text style={styles.text}>{chapterNumber}</Text>
         </Pressable>
     );
 }

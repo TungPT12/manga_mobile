@@ -1,19 +1,22 @@
 import React from 'react';
-import { Image, Text, View } from 'react-native';
-
-function MangaImage({ url, height, width }) {
+import { Dimensions, Text, View } from 'react-native';
+import Image from 'react-native-image-auto-height';
+function MangaImage({ url }) {
     return (
-        <View>
+        <View style={{
+            backgroundColor: "#000"
+        }}>
             <Image
                 source={{
                     uri: url
                 }}
                 style={{
-                    width: '100%',
-                    aspectRatio: width / height,
-                    resizeMode: 'contain'
+                    backgroundColor: "#000",
+                    width: Dimensions.get('screen').width,
+                    height: 'auto',
                 }}
             />
+
 
         </View>
     );

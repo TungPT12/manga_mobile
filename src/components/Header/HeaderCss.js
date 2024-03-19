@@ -5,7 +5,8 @@ const style = StyleSheet.create({
         zIndex: 1,
         position: 'relative',
         width: '100%',
-        paddingHorizontal: 8
+        // paddingHorizontal: 9,
+        backfaceVisibility: '#fff'
     }
 })
 

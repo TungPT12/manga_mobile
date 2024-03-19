@@ -12,6 +12,8 @@ function HeaderHome() {
                 flexDirection: 'row',
                 justifyContent: 'space-between',
                 alignItems: 'center',
+                paddingHorizontal: 9
+                // backgroundColor: 'red'
             }}>
                 <FontAwesomeIcon icon={faAlignJustify} size={28} />
                 <FontAwesomeIcon icon={faHeart}

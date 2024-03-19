@@ -1,25 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Image, ScrollView, Text, TouchableHighlight, View } from 'react-native';
-import styles from './DetailMangaCss';
-import HeaderDetail from './HeaderDetail';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faClock, faHeart, faPlusCircle, faTags, faUserCircle } from '@fortawesome/free-solid-svg-icons';
-import CardChapter from '../../components/CardChapter/CardChapter';
 import { getChaptersByMangaIdApi } from '../../apis/chapter';
+import { useSelector } from 'react-redux';
+import styles from './DetailMangaCss';
+import HeaderDetail from './HeaderDetail';
+import CardChapter from '../../components/CardChapter/CardChapter';
 function DetailManga({ navigation, route }) {
+    const todo = useSelector(state => state.todos);
+    console.log(todo)
     const [chapters, setChapters] = useState([])
     const [activeTabs, setActiveTabs] = useState({
         listChapterTab: true,
         introduceTabs: false,
     })
-    const { id, url, title, authors, otherNames, status, types, summary } = route.params;
-
-    const formatTypes = (types) => {
-        return types.map((type, index) => {
-            return type.name;
-        }).join(' - ')
-    }
-
+    const { id, url, title, authors, sub_title, status, genres, summary } = route.params;
     const getChaptersByMangaId = (id) => {
         getChaptersByMangaIdApi(id).then((response) => {
             if (response.status != 200) {
@@ -27,7 +23,7 @@ function DetailManga({ navigation, route }) {
             }
             return response.data;
         }).then((data) => {
-            setChapters(data)
+            setChapters(data.data)
         }).catch((error) => {
             console.log(error)
         })
@@ -36,10 +32,10 @@ function DetailManga({ navigation, route }) {
     const renderChapters = (chapters) => {
         return chapters.map((chapter) => {
             return <CardChapter
-                key={chapter._id}
+                key={chapter.id}
                 navigation={navigation}
-                idChapter={chapter._id}
-                chapterNumber={chapter.chapterNumber}
+                idChapter={chapter.id}
+                chapterNumber={chapter.title}
             />
         })
     }
@@ -75,7 +71,7 @@ function DetailManga({ navigation, route }) {
                         <View style={styles.infoManga}>
                             <View style={styles.otherName}>
                                 <FontAwesomeIcon icon={faPlusCircle} size={22} style={styles.icon} />
-                                <Text numberOfLines={1} style={styles.text}>{otherNames.join(' - ')}</Text>
+                                <Text numberOfLines={1} style={styles.text}>{sub_title}</Text>
                             </View>
                             <View style={styles.authors}>
                                 <FontAwesomeIcon icon={faUserCircle} size={22} style={styles.icon} />
@@ -87,7 +83,7 @@ function DetailManga({ navigation, route }) {
                             </View>
                             <View style={styles.types}>
                                 <FontAwesomeIcon icon={faTags} size={22} style={styles.icon} />
-                                <Text numberOfLines={1} style={styles.text}>{formatTypes(types)}</Text>
+                                <Text numberOfLines={1} style={styles.text}>{genres.join(' - ')}</Text>
                             </View>
                             <View style={styles.action}>
                                 <Button
@@ -130,7 +126,11 @@ function DetailManga({ navigation, route }) {
                             </TouchableHighlight>
                         </View>
                         <View style={{ flex: 1 }}>
-                            {renderChapters(chapters)}
+                            {
+                                activeTabs.introduceTabs ? <Text>
+                                    {summary}
+                                </Text> : renderChapters(chapters)
+                            }
                         </View>
                     </View>
                 </ScrollView>
