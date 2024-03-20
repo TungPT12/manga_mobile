@@ -1,11 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Home from './src/views/home/Home';
-import DetailManga from './src/views/detail/DetailManga';
-import MangaImages from './src/views/mangaImage/MangaImages';
+import Home from './src/views/HomeScreen/Home';
+import DetailManga from './src/views/DetailScreen/DetailManga';
+import MangaImages from './src/views/MangaImageScreen/MangaImages';
 import { Provider } from 'react-redux';
 import { store } from './src/store/store';
-import Genres from './src/views/genres/Genres';
+import Genres from './src/views/GenresScreen/Genres';
+import FilterManga from './src/views/FilterMangaScreen/FilterManga';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -37,6 +38,13 @@ export default function App() {
           <Stack.Screen
             name='genres'
             component={Genres}
+            options={{
+              headerShown: false
+            }}
+          />
+          <Stack.Screen
+            name='filterManga'
+            component={FilterManga}
             options={{
               headerShown: false
             }}

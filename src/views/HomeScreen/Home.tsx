@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { FlatList, Pressable, StatusBar, Text, View } from "react-native";
 import MangaCard from "../../components/MangaCard/MangaCard";
 import HeaderHome from "./HeaderHome";
-import { mangaServices } from "../../service/manga.service";
+import mangaServices from "../../service/manga.service";
 import NavbarLeft from "../NavbarLeft/NavbarLeft";
 import styles from "./Home.css";
 import useSWR, { mutate } from "swr";
+import PageSize from "../../components/PageSize/PageSize";
 
 function Home({ navigation }) {
   const [isShowNavbarLeft, setIsShowNavbarLeft] = useState(false);
@@ -27,13 +28,6 @@ function Home({ navigation }) {
         <></>
       )}
       <HeaderHome setIsShowNavbarLeft={setIsShowNavbarLeft} />
-      <Pressable
-        onPress={() => {
-          setPage(page + 1);
-        }}
-      >
-        <Text>Click</Text>
-      </Pressable>
       <FlatList
         keyExtractor={(item) => item.id}
         data={
@@ -59,6 +53,15 @@ function Home({ navigation }) {
               summary={item.summary}
             />
           );
+        }}
+      />
+      <PageSize
+        page={page}
+        handlePreviousPage={() => {
+          setPage(page - 1);
+        }}
+        handleNextPage={() => {
+          setPage(page + 1);
         }}
       />
     </View>

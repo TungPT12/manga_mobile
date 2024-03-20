@@ -8,6 +8,11 @@ const styles = StyleSheet.create({
         paddingBottom: StatusBar.currentHeight,
         backgroundColor: "#fff",
         position: "relative",
+    },
+
+    iconAlignCenter: {
+        color: "#9a9a9a",
+        transform: [{ rotate: "180deg" }]
     }
 })
 

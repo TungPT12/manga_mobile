@@ -16,7 +16,7 @@ function NavbarLeft({ navigation, setIsShowNavbarLeft }) {
   const leftToRight = useRef(new Animated.Value(-1000)).current;
   Animated.timing(leftToRight, {
     toValue: 0,
-    duration: 1000,
+    duration: 500,
     useNativeDriver: true,
   }).start();
   return (
@@ -39,23 +39,32 @@ function NavbarLeft({ navigation, setIsShowNavbarLeft }) {
         </View>
       </Header>
       <ScrollView style={styles.scrollView}>
-        <Pressable style={styles.wrapItem}>
+        <View style={styles.wrapItem}>
           <FontAwesomeIcon icon={faHouse} size={25} style={styles.icon} />
-          <Text style={styles.text}>Trang chủ</Text>
-        </Pressable>
+          <Pressable
+            onPress={() => {
+              setIsShowNavbarLeft(false);
+              navigation.navigate("home");
+            }}
+          >
+            <Text style={styles.text}>Trang chủ</Text>
+          </Pressable>
+        </View>
         <Pressable style={styles.wrapItem}>
           <FontAwesomeIcon icon={faHeart} size={25} style={styles.icon} />
           <Text style={styles.text}>Theo dõi</Text>
         </Pressable>
-        <Pressable
-          style={styles.wrapItem}
-          onPress={() => {
-            navigation.navigate("genres", {});
-          }}
-        >
+        <View style={styles.wrapItem}>
           <FontAwesomeIcon icon={faListDots} size={25} style={styles.icon} />
-          <Text style={styles.text}>Thể loại</Text>
-        </Pressable>
+          <Pressable
+            onPress={() => {
+              setIsShowNavbarLeft(false);
+              navigation.navigate("genres");
+            }}
+          >
+            <Text style={styles.text}>Thể loại</Text>
+          </Pressable>
+        </View>
         <Pressable style={styles.wrapItem}>
           <FontAwesomeIcon icon={faSignIn} size={25} style={styles.icon} />
           <Text style={styles.text}>Đăng nhập</Text>
