@@ -8,6 +8,12 @@ const style = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff'
     },
+    headerDetailManga: {
+        height: '100%',
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+
     image: {
         backgroundColor: '#000',
         justifyContent: 'flex-start',
