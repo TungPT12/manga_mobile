@@ -14,6 +14,7 @@ function HeaderHome({ setIsShowNavbarLeft }) {
           justifyContent: "space-between",
           alignItems: "center",
           paddingHorizontal: 9,
+          // backgroundColor: "#f2f2f2",
         }}
       >
         <Pressable

@@ -32,6 +32,7 @@ const axiosClient = axios.create({
 axiosClient.interceptors.response.use(function (response) {
     return response.data;
 }, function (error) {
+    console.log(error)
     return error;
 })
 

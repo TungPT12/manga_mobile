@@ -16,11 +16,13 @@ function Home({ navigation }) {
   useEffect(() => {
     mutate("GET_MANGAS");
   }, [page]);
-
   return (
     <View style={styles.home}>
       {isShowNavbarLeft ? (
-        <NavbarLeft setIsShowNavbarLeft={setIsShowNavbarLeft} />
+        <NavbarLeft
+          navigation={navigation}
+          setIsShowNavbarLeft={setIsShowNavbarLeft}
+        />
       ) : (
         <></>
       )}
@@ -35,7 +37,7 @@ function Home({ navigation }) {
       <FlatList
         keyExtractor={(item) => item.id}
         data={
-          mangaResponse.code == 200
+          mangaResponse
             ? mangaResponse.data.length > 0
               ? mangaResponse.data
               : []

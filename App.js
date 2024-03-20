@@ -5,6 +5,7 @@ import DetailManga from './src/views/detail/DetailManga';
 import MangaImages from './src/views/mangaImage/MangaImages';
 import { Provider } from 'react-redux';
 import { store } from './src/store/store';
+import Genres from './src/views/genres/Genres';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -29,6 +30,13 @@ export default function App() {
           <Stack.Screen
             name='manga'
             component={MangaImages}
+            options={{
+              headerShown: false
+            }}
+          />
+          <Stack.Screen
+            name='genres'
+            component={Genres}
             options={{
               headerShown: false
             }}

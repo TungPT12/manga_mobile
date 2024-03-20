@@ -6,13 +6,13 @@ import {
   faClose,
   faHeart,
   faHouse,
-  faList12,
   faListDots,
   faSignIn,
 } from "@fortawesome/free-solid-svg-icons";
 import Header from "../../components/Header/Header";
+import { useNavigation } from "@react-navigation/native";
 
-function NavbarLeft({ setIsShowNavbarLeft }) {
+function NavbarLeft({ navigation, setIsShowNavbarLeft }) {
   const leftToRight = useRef(new Animated.Value(-1000)).current;
   Animated.timing(leftToRight, {
     toValue: 0,
@@ -47,7 +47,12 @@ function NavbarLeft({ setIsShowNavbarLeft }) {
           <FontAwesomeIcon icon={faHeart} size={25} style={styles.icon} />
           <Text style={styles.text}>Theo dõi</Text>
         </Pressable>
-        <Pressable style={styles.wrapItem}>
+        <Pressable
+          style={styles.wrapItem}
+          onPress={() => {
+            navigation.navigate("genres", {});
+          }}
+        >
           <FontAwesomeIcon icon={faListDots} size={25} style={styles.icon} />
           <Text style={styles.text}>Thể loại</Text>
         </Pressable>
