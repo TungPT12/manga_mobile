@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, Text, View } from "react-native";
+import { FlatList, View } from "react-native";
 import MangaCard from "../../components/MangaCard/MangaCard";
 import FilterMangaHeader from "./FilterMangaHeader";
 import NavbarLeft from "../NavbarLeft/NavbarLeft";
 import styles from "./FilterManga.css";
 import useSWR, { mutate } from "swr";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import PageSize from "../../components/PageSize/PageSize";
 import mangaServices from "../../service/manga.service";
 
@@ -33,6 +31,7 @@ function FilterManga({ navigation, route }) {
       <FilterMangaHeader
         navigation={navigation}
         setIsShowNavbarLeft={setIsShowNavbarLeft}
+        title={genres}
       />
       <FlatList
         keyExtractor={(item) => item.id}

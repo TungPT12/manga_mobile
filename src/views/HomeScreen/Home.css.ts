@@ -10,8 +10,18 @@ const styles = StyleSheet.create({
         position: "relative",
     },
 
-    angleIcon: {
+    leftHeader: {
+        flexDirection: "row",
+        gap: 9
+    },
 
+    containerLoadingSpinner: {
+        height: "100%",
+        justifyContent: "center"
+    },
+    textTitle: {
+        fontSize: 20,
+        marginLeft: 24,
     }
 })
 

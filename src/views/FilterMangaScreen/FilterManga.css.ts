@@ -13,6 +13,10 @@ const styles = StyleSheet.create({
     iconAlignCenter: {
         color: "#9a9a9a",
         transform: [{ rotate: "180deg" }]
+    },
+    textTitle: {
+        fontSize: 20,
+        marginLeft: 24,
     }
 })
 

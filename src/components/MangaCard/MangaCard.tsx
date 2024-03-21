@@ -35,7 +35,9 @@ function MangaCard({
           });
         }}
       >
-        <Text style={styles.mangaName}>{title}</Text>
+        <Text numberOfLines={2} style={styles.mangaName}>
+          {title}
+        </Text>
       </Pressable>
     </View>
   );

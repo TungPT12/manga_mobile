@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { Pressable, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import {
   faAlignCenter,
   faAlignJustify,
@@ -8,7 +8,7 @@ import React from "react";
 import Header from "../../components/Header/Header";
 import styles from "./FilterManga.css";
 
-function FilterMangaHeader({ navigation, setIsShowNavbarLeft }) {
+function FilterMangaHeader({ navigation, setIsShowNavbarLeft, title }) {
   return (
     <Header>
       <View
@@ -20,13 +20,24 @@ function FilterMangaHeader({ navigation, setIsShowNavbarLeft }) {
           paddingHorizontal: 9,
         }}
       >
-        <Pressable
-          onPress={() => {
-            setIsShowNavbarLeft(true);
+        <View
+          style={{
+            height: "100%",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            paddingHorizontal: 9,
           }}
         >
-          <FontAwesomeIcon icon={faAlignJustify} color="#9a9a9a" size={28} />
-        </Pressable>
+          <Pressable
+            onPress={() => {
+              setIsShowNavbarLeft(true);
+            }}
+          >
+            <FontAwesomeIcon icon={faAlignJustify} color="#9a9a9a" size={28} />
+          </Pressable>
+          <Text style={styles.textTitle}>{title}</Text>
+        </View>
         <Pressable
           onPress={() => {
             navigation.navigate("genres");

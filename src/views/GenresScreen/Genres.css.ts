@@ -5,7 +5,8 @@ const styles = StyleSheet.create({
         height: '100%',
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: "#f3f3f3"
+        backgroundColor: "#f3f3f3",
+        paddingHorizontal: 9,
     },
 
     genres: {

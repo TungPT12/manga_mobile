@@ -1,41 +1,59 @@
-import React, { useEffect, useState } from "react";
-import { FlatList, View } from "react-native";
+import React, { useEffect, useMemo, useState } from "react";
+import { FlatList, Pressable, Text, View } from "react-native";
 import MangaImage from "../../components/MangaImage/MangaImage";
 import styles from "./MangaImage.css";
-import { getImagesByChapterIdApi } from "../../service/image";
+import imageService from "../../service/image.service";
+import useSWR from "swr";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import Header from "../../components/Header/Header";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 
 function MangaImages({ navigation, route }) {
-  const [images, setImages] = useState([]);
-  const { idChapter } = route.params;
-
-  const getImagesByChapterId = (chapterId) => {
-    getImagesByChapterIdApi(chapterId)
-      .then((response) => {
-        if (response.status != 200) {
-          throw new Error(JSON.stringify(response.error));
+  const { idChapter, name } = route.params;
+  const [isLoading, setIsLoading] = useState(true);
+  const { data: imageResponse = null } = useSWR(
+    "GET_IMAGES",
+    idChapter
+      ? () => {
+          return imageService.getImagesManga(idChapter);
         }
-        return response.data;
-      })
-      .then((data) => {
-        setImages(data.data);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  };
+      : null
+  );
+
   useEffect(() => {
-    getImagesByChapterId(idChapter);
-  }, []);
+    if (imageResponse) {
+      setIsLoading(false);
+    }
+  }, [imageResponse]);
 
   return (
     <View style={styles.container}>
-      <FlatList
-        keyExtractor={(item) => item.id}
-        data={images}
-        renderItem={({ item }) => {
-          return <MangaImage key={item.id} url={item.link} />;
-        }}
-      />
+      <Header>
+        <View style={styles.headerImageManga}>
+          <Pressable
+            onPress={() => {
+              navigation.goBack();
+            }}
+          >
+            <FontAwesomeIcon icon={faArrowLeft} size={25} />
+          </Pressable>
+          <Text numberOfLines={1} style={styles.textHeaderTitle}>
+            {name}
+          </Text>
+        </View>
+      </Header>
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
+        <FlatList
+          keyExtractor={(item) => item.id}
+          data={imageResponse ? imageResponse.data : []}
+          renderItem={({ item }) => {
+            return <MangaImage key={item.id} url={item.link} />;
+          }}
+        />
+      )}
     </View>
   );
 }

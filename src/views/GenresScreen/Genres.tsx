@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import Header from "../../components/Header/Header";
 import styles from "./Genres.css";
-import { useNavigation } from "@react-navigation/native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useMemo } from "react";
@@ -60,8 +59,8 @@ function Genres({ navigation }) {
           <Text
             style={{
               fontSize: 18,
-              marginLeft: 18,
               fontWeight: "500",
+              marginLeft: 24,
             }}
           >
             Thể loại

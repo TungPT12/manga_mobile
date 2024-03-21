@@ -73,8 +73,8 @@ const style = StyleSheet.create({
         color: '#D3D3D3'
     },
     action: {
+        columnGap: 14,
         marginTop: 8,
-        justifyContent: "space-between",
         flexDirection: 'row'
     },
     wrapTabs: {
