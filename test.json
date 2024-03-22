@@ -1,0 +1,38 @@
+[
+    {
+        "code": 200,
+        "data": {
+            "authors": [],
+            "create_at": 1705324200839,
+            "genres": [],
+            "id": "65a52ea8f64a55128b487e1b",
+            "nsfw": true,
+            "status": "ongoing",
+            "sub_title": "",
+            "summary": "Once upon a time, the world had been divided into the Moon Kingdom, inhabited by humans, and the Sun Kingdom, inhabited by demons. Estelle, a knight of the Moon Kingdom, loses her family to an ambush from the demons and is sentenced to life in exile after becoming entangled with a mysterious demon child. To survive, she sets out to a mysterious tower in the north with her companions. A timid knight, a slave boy, and a shadow who was once the Demon King. This is an alluring story about three people embarking on an adventure to find their true selves.",
+            "thumb": "https: //usc1.contabostorage.com/scraper/mangas/65a52ea8f64a55128b487e1b/thumb.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=c10e9464b360c31ce8abea9b266076f6%2F20240322%2Fdefault%2Fs3%2Faws4_request&X-Amz-Date=20240322T010852Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=1fd47117e94c2d640f7bd23fd2c76e54d8bb6b3705f83273599bb077d4c03c8f",
+            "title": " A World of Gold to You",
+            "total_chapter": 0,
+            "type": "korea",
+            "update_at": 1705324333619
+        }
+    },
+    {
+        "code": 200,
+        "data": {
+            "authors": [],
+            "create_at": 1706449970558,
+            "genres": [],
+            "id": "65b65c32bf13b1bd72cec0c7",
+            "nsfw": false,
+            "status": "ongoing",
+            "sub_title": "恶魔X天使 不能友好相处",
+            "summary": "Demons and angels are two opposite races. As the times change, they are tired of fighting. In order to coexist peacefully, they decided to start a marriage plan! The plan has a one-year observation period. If the devil and angel still cannot get along well, the marriage will be cancelled. As a result, Jiacheng devil and Yu Shanshan angel were “luckily” selected by lottery as marriage partners, and started a “happy” cohabitation life with the destination of divorce~",
+            "thumb": "https: //usc1.contabostorage.com/scraper/mangas/65b65c32bf13b1bd72cec0c7/thumb.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=c10e9464b360c31ce8abea9b266076f6%2F20240322%2Fdefault%2Fs3%2Faws4_request&X-Amz-Date=20240322T010852Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=793db96378b0b983cd16e36b64d7e8b76948044620226df2104ef74c19d0092d",
+            "title": " Demon X Angel, Can’t Get Along!",
+            "total_chapter": 116,
+            "type": "china",
+            "update_at": 1710316416255
+        }
+    }
+]

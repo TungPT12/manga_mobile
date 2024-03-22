@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { store } from './src/store/store';
 import Genres from './src/views/GenresScreen/Genres';
 import FilterManga from './src/views/FilterMangaScreen/FilterManga';
+import LikeManga from './src/views/LikeMangaScreen/LikeManga';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -45,6 +46,13 @@ export default function App() {
           <Stack.Screen
             name='filterManga'
             component={FilterManga}
+            options={{
+              headerShown: false
+            }}
+          />
+          <Stack.Screen
+            name='likeManga'
+            component={LikeManga}
             options={{
               headerShown: false
             }}

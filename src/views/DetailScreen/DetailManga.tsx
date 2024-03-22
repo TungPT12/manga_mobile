@@ -23,6 +23,7 @@ import styles from "./DetailManga.css";
 import HeaderDetail from "./HeaderDetail";
 import CardChapter from "../../components/CardChapter/CardChapter";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import localStore from "../../utils/local-store";
 function DetailManga({ navigation, route }) {
   //   const todo = useSelector((state) => state.todos);
   //   console.log(todo);
@@ -228,14 +229,22 @@ function DetailManga({ navigation, route }) {
             </ScrollView>
           </View>
           <View style={styles.footer}>
-            <FontAwesomeIcon
-              icon={faHeart}
-              size={22}
-              color="#b6b6b6"
-              style={{
-                elevation: 10,
+            <Pressable
+              onPress={() => {
+                localStore.storeData(id).then((response) => {
+                  console.log(response);
+                });
               }}
-            />
+            >
+              <FontAwesomeIcon
+                icon={faHeart}
+                size={22}
+                color="#b6b6b6"
+                style={{
+                  elevation: 10,
+                }}
+              />
+            </Pressable>
           </View>
         </>
       )}

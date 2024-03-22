@@ -50,7 +50,13 @@ function NavbarLeft({ navigation, setIsShowNavbarLeft }) {
             <Text style={styles.text}>Trang chủ</Text>
           </Pressable>
         </View>
-        <Pressable style={styles.wrapItem}>
+        <Pressable
+          style={styles.wrapItem}
+          onPress={() => {
+            setIsShowNavbarLeft(false);
+            navigation.navigate("likeManga");
+          }}
+        >
           <FontAwesomeIcon icon={faHeart} size={25} style={styles.icon} />
           <Text style={styles.text}>Theo dõi</Text>
         </Pressable>
