@@ -12,7 +12,7 @@ import {
 import Header from "../../components/Header/Header";
 import { useNavigation } from "@react-navigation/native";
 
-function NavbarLeft({ navigation, setIsShowNavbarLeft }) {
+function NavbarLeft({ navigation, handleFunction, setIsShowNavbarLeft }) {
   const leftToRight = useRef(new Animated.Value(-1000)).current;
   Animated.timing(leftToRight, {
     toValue: 0,
@@ -43,6 +43,7 @@ function NavbarLeft({ navigation, setIsShowNavbarLeft }) {
           <FontAwesomeIcon icon={faHouse} size={25} style={styles.icon} />
           <Pressable
             onPress={() => {
+              handleFunction();
               setIsShowNavbarLeft(false);
               navigation.navigate("home");
             }}
@@ -53,6 +54,7 @@ function NavbarLeft({ navigation, setIsShowNavbarLeft }) {
         <Pressable
           style={styles.wrapItem}
           onPress={() => {
+            handleFunction();
             setIsShowNavbarLeft(false);
             navigation.navigate("likeManga");
           }}
@@ -64,6 +66,7 @@ function NavbarLeft({ navigation, setIsShowNavbarLeft }) {
           <FontAwesomeIcon icon={faListDots} size={25} style={styles.icon} />
           <Pressable
             onPress={() => {
+              handleFunction();
               setIsShowNavbarLeft(false);
               navigation.navigate("genres");
             }}
@@ -71,10 +74,10 @@ function NavbarLeft({ navigation, setIsShowNavbarLeft }) {
             <Text style={styles.text}>Thể loại</Text>
           </Pressable>
         </View>
-        <Pressable style={styles.wrapItem}>
+        {/* <Pressable style={styles.wrapItem}>
           <FontAwesomeIcon icon={faSignIn} size={25} style={styles.icon} />
           <Text style={styles.text}>Đăng nhập</Text>
-        </Pressable>
+        </Pressable> */}
       </ScrollView>
     </Animated.View>
   );

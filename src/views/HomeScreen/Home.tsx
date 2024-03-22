@@ -15,9 +15,9 @@ import styles from "./Home.css";
 import useSWR, { mutate } from "swr";
 import PageSize from "../../components/PageSize/PageSize";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import HeaderWithNavbarLeft from "../../components/HeaderWithNavbarLeft/HeaderWithNavbarLeft";
 
 function Home({ navigation }) {
-  const [isShowNavbarLeft, setIsShowNavbarLeft] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
   const { data: mangaResponse } = useSWR("GET_MANGAS", () => {
@@ -36,17 +36,12 @@ function Home({ navigation }) {
 
   return (
     <View style={styles.home}>
-      {isShowNavbarLeft ? (
-        <NavbarLeft
-          navigation={navigation}
-          setIsShowNavbarLeft={setIsShowNavbarLeft}
-        />
-      ) : (
-        <></>
-      )}
-      <HeaderHome
-        title={"Trang chủ"}
-        setIsShowNavbarLeft={setIsShowNavbarLeft}
+      <HeaderWithNavbarLeft
+        handleFunction={() => {
+          setPage(1);
+        }}
+        navigation={navigation}
+        title={"Home"}
       />
       {isLoading ? (
         <LoadingSpinner />
