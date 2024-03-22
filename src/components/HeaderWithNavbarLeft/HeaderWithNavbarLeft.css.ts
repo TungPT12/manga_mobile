@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
   textTitle: {
     fontSize: 20,
     marginLeft: 24,
+    fontWeight: "500",
   },
 });
 

@@ -15,8 +15,6 @@ function LikeManga({ navigation }) {
   const [listMangas, setListMangas] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const listId = localStore.getData();
-  console.log(listId);
-  // const { data } = useSWR("GET_YOUR_MANGAS");
   const getYourMangas = () => {
     localStore
       .getData()

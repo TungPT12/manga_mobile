@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
 import {
-  ActivityIndicator,
   Button,
   Image,
   Pressable,
@@ -34,6 +33,7 @@ function DetailManga({ navigation, route }) {
     listChapterTab: true,
     introduceTabs: false,
   });
+  const [isMangaLike, setIsMangaLike] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [firstNLastChap, setFirstNLastChap] = useState({
     firstChap: "",
@@ -48,6 +48,14 @@ function DetailManga({ navigation, route }) {
         return response.data;
       })
       .then((data) => {
+        localStore.getData().then((data) => {
+          const position = data.findIndex((idLikeManga: string) => {
+            return idLikeManga === id;
+          });
+          if (position > -1) {
+            setIsMangaLike(true);
+          }
+        });
         setChapters(data.data);
         setFirstNLastChap({
           firstChap: data.data[0].id,
@@ -232,14 +240,14 @@ function DetailManga({ navigation, route }) {
             <Pressable
               onPress={() => {
                 localStore.storeData(id).then((response) => {
-                  console.log(response);
+                  setIsMangaLike(!isMangaLike);
                 });
               }}
             >
               <FontAwesomeIcon
                 icon={faHeart}
                 size={22}
-                color="#b6b6b6"
+                color={isMangaLike ? "red" : "#b6b6b6"}
                 style={{
                   elevation: 10,
                 }}

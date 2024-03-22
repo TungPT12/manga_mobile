@@ -6,10 +6,14 @@ import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 function PageSize({ page, handlePreviousPage, handleNextPage }) {
   return (
     <View style={styles.wrapPageSize}>
-      <Pressable onPress={handlePreviousPage} style={styles.preButton}>
+      <Pressable
+        onPress={handlePreviousPage}
+        disabled={page === 1 ? true : false}
+        style={page === 1 ? styles.disableButton : styles.preButton}
+      >
         <FontAwesomeIcon
           icon={faAngleLeft}
-          style={styles.angleIcon}
+          style={page === 1 ? styles.disableAngle : styles.angleIcon}
           size={28}
         />
       </Pressable>
