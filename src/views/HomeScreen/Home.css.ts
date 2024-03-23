@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
   home: {
     width: "100%",
     height: "100%",
-    marginTop: StatusBar.currentHeight,
+    // marginTop: StatusBar.currentHeight,
     paddingBottom: StatusBar.currentHeight,
     backgroundColor: "#fff",
     position: "relative",
